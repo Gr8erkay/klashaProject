@@ -24,7 +24,14 @@ public class SecurityConfig {
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/api/v1/auth/**")
+                .requestMatchers("/api/v1/auth/**",
+                        "/v3/api-docs/**",
+                        "/swagger-ui/**",
+                        "/actuator/**",
+                        "/swagger-resources/**",
+                        "/swagger-ui.html",
+                        "/webjars/**",
+                        "**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
@@ -36,8 +43,5 @@ public class SecurityConfig {
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();
     }
-
-
-
 
 }

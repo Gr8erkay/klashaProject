@@ -2,19 +2,18 @@ package com.gr8erkay.klashaproject.entity;
 
 import com.gr8erkay.klashaproject.utils.Role;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
-@Data
+
 @Builder
-@AllArgsConstructor
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {
@@ -54,7 +53,7 @@ public class User implements UserDetails {
     @Override
     public boolean isAccountNonLocked() {
 
-        return false;
+        return true;
     }
 
     @Override
@@ -65,6 +64,6 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
 
-        return false;
+        return true;
     }
 }
